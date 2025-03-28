@@ -9,9 +9,10 @@ package pkg2025.decima.clase;
  * @author Joel
  */
 class Estudiante {
+
     private String nombre;
     private String apellidos;
-    private int nota; 
+    private int nota;
 
     public Estudiante(String nombre, String apellidos, int nota) {
         this.nombre = nombre;
@@ -42,6 +43,10 @@ class Estudiante {
     public void setNota(int nota) {
         this.nota = nota;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Estudiante{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", nota=" + nota + '}';
+    }
+
 }
