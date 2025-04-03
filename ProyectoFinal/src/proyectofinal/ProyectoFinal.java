@@ -24,12 +24,20 @@ public class ProyectoFinal {
         for (int i = 0; i < cantidad; i++) {
             int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la ID de la persona " + (i + 1) + ":"));
             String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la persona " + (i + 1) + ":");
-            String tipo = JOptionPane.showInputDialog("Ingrese el tipo (Director, Invitado, Discapacitado) de la persona " + (i + 1) + ":");
+            String tipo;
+            while (true) {
+                tipo = JOptionPane.showInputDialog("Ingrese el tipo (Director, Invitado, Discapacitado) de la persona " + (i+1) + ":");
+                if (tipo.equalsIgnoreCase("Director") || tipo.equalsIgnoreCase("Invitado") || tipo.equalsIgnoreCase("Discapacitado")) {
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error: Tipo inválido. Debe de ser Director, Invitado o Discapacitado");
+                }
+            }
 
             personas[i] = new Persona(id, nombre, tipo);
         }
 
-        // Ordenar por tipo: Directo > Invitado > Discapacitado
+        // Ordenar por tipo: Director > Invitado > Discapacitado
         Arrays.sort(personas, Comparator.comparingInt(p -> {
             switch (p.getTipo().toLowerCase()) {
                 case "director":
